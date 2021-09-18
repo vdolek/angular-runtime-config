@@ -222,3 +222,7 @@ AngularRuntimeConfigModule.forRoot(Configuration, {
        multi: true
      }
      ```
+
+## License
+
+MIT © [Martin Volek](mailto:martin@vdolek.cz)
