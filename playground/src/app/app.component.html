@@ -1,31 +1,41 @@
 <h1>angular-runtime-config playground</h1>
 
-<h2>Environments</h2>
-<ul>
-  <li><a href="">default</a></li>
-  <li><a href="?env=DEV">DEV</a></li>
-  <li><a href="?env=INT">INT</a></li>
-  <li><a href="?env=PROD">PROD</a></li>
-</ul>
+<div class="row mt-3">
+  <div class="col-3">
+    <div class="list-group">
+      <a href="" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'LOCAL'">default</a>
+      <a href="?env=DEV" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'DEV'">DEV</a>
+      <a href="?env=INT" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'INT'">INT</a>
+      <a href="?env=PROD" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'PROD'">PROD</a>
+    </div>
+  </div>
 
-<h2>Loaded configuration</h2>
-<ul>
-  <li>
-    cacheExpiration
-    <ul>
-      <li>{{ config.cacheExpiration }}</li>
-    </ul>
-  </li>
-  <li>
-    backendUrl
-    <ul>
-      <li>{{ config.backendUrl }}</li>
-    </ul>
-  </li>
-  <li>
-    webApiKey
-    <ul>
-      <li>{{ config.webApiKey ?? 'null' }}</li>
-    </ul>
-  </li>
-</ul>
+  <div class="col-9">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" style="width: 30%">Parameter</th>
+        <th scope="col">Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>environmentName</td>
+        <td>{{ config.environmentName }}</td>
+      </tr>
+      <tr>
+        <td>cacheExpiration</td>
+        <td>{{ config.cacheExpiration }}</td>
+      </tr>
+      <tr>
+        <td>backendUrl</td>
+        <td>{{ config.backendUrl }}</td>
+      </tr>
+      <tr>
+        <td>webApiKey</td>
+        <td>{{ config.webApiKey }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
