@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injector, NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders } from '@angular/core';
 import { ConfigurationService } from './configuration.service';
@@ -15,7 +15,7 @@ import { isPromise } from './helpers';
   ]
 })
 export class AngularConfigModule {
-  public static forRoot<TConfiguration>(configurationType: { new(...args: any[]): TConfiguration }, options?: ConfigurationOptions): ModuleWithProviders<AngularConfigModule> {
+  public static forRoot<TConfiguration>(configurationType: Type<TConfiguration>, options?: ConfigurationOptions): ModuleWithProviders<AngularConfigModule> {
     return {
       ngModule: AngularConfigModule,
       providers: [

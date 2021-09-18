@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Injector, Type } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CONFIGURATION_OPTIONS, CONFIGURATION_TYPE } from './configuration.injection-tokens';
@@ -22,7 +22,8 @@ export class ConfigurationService<TConfiguration> {
   public constructor(
     private readonly http: HttpClient,
     private readonly platformLocation: PlatformLocation,
-    @Inject(CONFIGURATION_TYPE) private readonly configurationType: { new(...args: any[]): TConfiguration },
+    private readonly injector: Injector,
+    @Inject(CONFIGURATION_TYPE) private readonly configurationType: Type<TConfiguration>,
     @Inject(CONFIGURATION_OPTIONS) private readonly configurationOptions: ConfigurationOptions | undefined
   ) {
   }
@@ -53,7 +54,7 @@ export class ConfigurationService<TConfiguration> {
       return ['config.json'];
     }
 
-    let result = this.configurationOptions.urlFactory();
+    let result = this.configurationOptions.urlFactory(this.injector);
 
     if (isPromise(result)) {
       result = await result;
