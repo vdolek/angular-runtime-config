@@ -11,7 +11,7 @@ Angular framework lacks support for runtime configuration management. Build-in e
 with the deployment package, so you have to build the application for every environment. It doesn't allow you
 to build one package which could be deployed to different environments.
 
-This library brings support for loading configuration in runtime based on your configuration. It also allows you to
+This library brings support for loading configuration in runtime. It also allows you to
 load multiple configuration files and merge them into one configuration object.
 
 ## Playground
