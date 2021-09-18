@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@angular/core';
-import { ConfigurationBase, ConfigurationJson } from './configuration.model';
 import { PlatformLocation } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CONFIGURATION_OPTIONS, CONFIGURATION_TYPE } from './configuration.injection-tokens';
@@ -9,7 +8,7 @@ import { isPromise } from './helpers';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigurationService<TConfiguration extends ConfigurationBase> {
+export class ConfigurationService<TConfiguration> {
   private config?: TConfiguration;
 
   public get configuration(): TConfiguration {
@@ -23,7 +22,7 @@ export class ConfigurationService<TConfiguration extends ConfigurationBase> {
   public constructor(
     private readonly http: HttpClient,
     private readonly platformLocation: PlatformLocation,
-    @Inject(CONFIGURATION_TYPE) private readonly configurationType: { new(json: ConfigurationJson): TConfiguration },
+    @Inject(CONFIGURATION_TYPE) private readonly configurationType: { new(...args: any[]): TConfiguration },
     @Inject(CONFIGURATION_OPTIONS) private readonly configurationOptions: ConfigurationOptions | undefined
   ) {
   }
@@ -32,23 +31,26 @@ export class ConfigurationService<TConfiguration extends ConfigurationBase> {
     const urls = await this.getUrls();
     const externalUrls = urls.map(x => this.ensureExternalUrl(x));
 
-    const promises = externalUrls.map(url => this.http.get<ConfigurationJson>(url).toPromise());
+    const promises = externalUrls.map(url => this.http.get(url).toPromise());
     await Promise.all(promises);
 
-    let config: ConfigurationJson = {};
+    let config = new this.configurationType();
     for (const promise of promises) {
-      config = {
-        ...config,
-        ...await promise
+      const value = await promise;
+      for (const prop in value) {
+        if (value.hasOwnProperty(prop)) {
+          // @ts-ignore
+          config[prop] = value[prop];
+        }
       }
     }
 
-    this.config = new this.configurationType(config);
+    this.config = config;
   }
 
   private async getUrls(): Promise<string[]> {
     if (this.configurationOptions?.urlFactory == null) {
-      return ['config.common.json'];
+      return ['config.json'];
     }
 
     let result = this.configurationOptions.urlFactory();
@@ -69,8 +71,12 @@ export class ConfigurationService<TConfiguration extends ConfigurationBase> {
   }
 
   private ensureExternalUrl(url: string): string {
-    if (url.indexOf('://')) {
+    if (url.startsWith('//') || url.startsWith('http://') || url.startsWith('https://')) {
       return url;
+    }
+
+    if (url.startsWith('/')) {
+      url = url.substr(1);
     }
 
     const baseHref = this.platformLocation.getBaseHrefFromDOM();

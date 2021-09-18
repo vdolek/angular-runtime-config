@@ -1,6 +1,4 @@
-import { ConfigurationBase } from 'angular-config';
-
-export class Configuration extends ConfigurationBase {
+export class Configuration {
   readonly cacheExpiration!: string;
 
   readonly backendUrl!: string;

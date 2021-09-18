@@ -10,7 +10,22 @@
 
 <h2>Loaded configuration</h2>
 <ul>
-  <li *ngFor="let key of [ 'cacheExpiration', 'backendUrl', 'webApiKey' ]">
-    {{ key }}: {{ config[key] ?? 'NULL' }}
+  <li>
+    cacheExpiration
+    <ul>
+      <li>{{ config.cacheExpiration }}</li>
+    </ul>
+  </li>
+  <li>
+    backendUrl
+    <ul>
+      <li>{{ config.backendUrl }}</li>
+    </ul>
+  </li>
+  <li>
+    webApiKey
+    <ul>
+      <li>{{ config.webApiKey ?? 'null' }}</li>
+    </ul>
   </li>
 </ul>

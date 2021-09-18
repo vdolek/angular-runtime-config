@@ -11,11 +11,12 @@ import { Configuration } from './configuration';
   ],
   imports: [
     BrowserModule,
+
     AngularConfigModule.forRoot(Configuration, {
       urlFactory: () => {
         const urlParams = new URLSearchParams(window.location.search);
         const env = urlParams.get('env') ?? 'LOCAL';
-        return ['config/config.common.json', `config/config.${env}.json`]
+        return ['/config/config.common.json', `/config/config.${env}.json`]
       }
     })
   ],

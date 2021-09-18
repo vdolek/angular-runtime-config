@@ -1,11 +1,10 @@
 import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders } from '@angular/core';
-import { ConfigurationBase, ConfigurationJson } from './configuration.model';
 import { ConfigurationService } from './configuration.service';
 import { CONFIGURATION_APP_INITIALIZER, CONFIGURATION_OPTIONS, CONFIGURATION_TYPE } from './configuration.injection-tokens';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigurationOptions, ConfigurationUrlFactory } from './configuration.options';
+import { ConfigurationOptions } from './configuration.options';
 import { isPromise } from './helpers';
 
 @NgModule({
@@ -16,7 +15,7 @@ import { isPromise } from './helpers';
   ]
 })
 export class AngularConfigModule {
-  public static forRoot<TConfiguration extends ConfigurationBase>(configurationType: { new(json: ConfigurationJson): TConfiguration }, options?: ConfigurationOptions): ModuleWithProviders<AngularConfigModule> {
+  public static forRoot<TConfiguration>(configurationType: { new(...args: any[]): TConfiguration }, options?: ConfigurationOptions): ModuleWithProviders<AngularConfigModule> {
     return {
       ngModule: AngularConfigModule,
       providers: [
