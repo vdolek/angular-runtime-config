@@ -4,4 +4,5 @@ export type ConfigurationUrlFactory = (injector: Injector) => string | string[] 
 
 export interface ConfigurationOptions {
   urlFactory?: ConfigurationUrlFactory;
+  log?: boolean;
 }

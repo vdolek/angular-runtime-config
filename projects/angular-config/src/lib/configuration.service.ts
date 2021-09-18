@@ -29,6 +29,14 @@ export class ConfigurationService<TConfiguration> {
   }
 
   public async init(): Promise<void> {
+    try {
+      await this.initInternal();
+    } catch (error) {
+      throw Error(`Configuration load failed - ${error.message}`);
+    }
+  }
+
+  private async initInternal(): Promise<void> {
     const urls = await this.getUrls();
     const externalUrls = urls.map(x => this.ensureExternalUrl(x));
 
@@ -47,6 +55,10 @@ export class ConfigurationService<TConfiguration> {
     }
 
     this.config = config;
+
+    if (this.configurationOptions?.log === true) {
+      console.log("Configuration loaded", config);
+    }
   }
 
   private async getUrls(): Promise<string[]> {

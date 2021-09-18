@@ -73,7 +73,7 @@ export class SomeService {
       imports: [
         ...,
     
-        // Specify AngularConfigModule as an import
+        // specify AngularConfigModule as an import
         AngularConfigModule.forRoot(Configuration)
       ],
       providers: [],
@@ -84,7 +84,7 @@ export class SomeService {
 
 1. Create `config.json` file at the root of your app.
 
-   ```json
+   ```javascript
    {
      "apiUrl": "some url",
      "apiKey": "some key"
@@ -93,12 +93,12 @@ export class SomeService {
    
 1. Add `config.json` file to assets in `angular.json`
 
-   ```json
+   ```javascript
    ...
    "assets": [
      "src/favicon.ico",
      "src/assets",
-     "config.json"
+     "src/config.json" // <-- this line
    ],
    ...
    ```
@@ -116,11 +116,14 @@ With this basic usage it is the responsibility of deployment to change `config.j
 
 If you want to make your deployment simple you can make the decision what configuration file to
 load in runtime based on some information (for example current app URL or a query string).
-For that read further.
+For that look at the code examples next.
 
-## Specifying which configuration file to load
+## Specifying which configuration file/files to load
 
 ### Only change loaded configuration file
+
+Configuration file URL can be absolute or relative to app root url.
+
 ```typescript
 AngularConfigModule.forRoot(Configuration, {
   urlFactory: () => 'config/config.json'
@@ -137,7 +140,20 @@ AngularConfigModule.forRoot(Configuration, {
 })
 ```
 
+Don't forget to add all configuration files to assets in `angular.json`. You can also add whole folder.
+
+```javascript
+...
+"assets": [
+  "src/favicon.ico",
+  "src/assets",
+  "src/config" // <-- adds whole folder
+],
+...
+```
+
 ### Load multiple configuration files based on environment
+
 ```typescript
 AngularConfigModule.forRoot(Configuration, {
   urlFactory: () => {
