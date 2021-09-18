@@ -13,7 +13,10 @@
   "keywords": [
     "angular",
     "configuration",
-    "config"
+    "config",
+    "package",
+    "environment",
+    "deployment"
   ],
   "license": "MIT",
   "peerDependencies": {

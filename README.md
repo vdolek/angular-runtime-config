@@ -8,7 +8,7 @@
 Are you tired of default compiled-in environments in Angular apps? Do you want to have one package that you can
 move between your environments without needing to compile it every time?
 
-**`angular-config` library is here just for that!**
+**`angular-config` library is here just for that!** One package with multiple environment configuration support for Angular apps.
 
 ## Playground
 
