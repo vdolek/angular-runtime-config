@@ -1,0 +1,29 @@
+{
+  "name": "angular-config",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vdolek/angular-config"
+  },
+  "homepage": "https://github.com/vdolek/angular-config#readme",
+  "author": {
+    "name": "Martin Volek",
+    "email": "martin@vdolek.cz"
+  },
+  "keywords": [
+    "angular",
+    "configuration",
+    "config",
+    "package",
+    "environment",
+    "deployment"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
