@@ -98,7 +98,7 @@ export class SomeService {
    "assets": [
      "src/favicon.ico",
      "src/assets",
-     "config.json"
+     "src/config.json"
    ],
    ...
    ```
@@ -138,6 +138,7 @@ AngularConfigModule.forRoot(Configuration, {
 ```
 
 ### Load multiple configuration files based on environment
+
 ```typescript
 AngularConfigModule.forRoot(Configuration, {
   urlFactory: () => {
@@ -145,6 +146,18 @@ AngularConfigModule.forRoot(Configuration, {
     return ['/config/config.common.json', `/config/config.${env}.json`]
   }
 })
+```
+
+Don't forget to add all configuration files to assets in `angular.json`. You can also add whole folder.
+
+```json
+...
+"assets": [
+  "src/favicon.ico",
+  "src/assets",
+  "src/config"
+],
+...
 ```
 
 Example of `getEnvironment()` function:
