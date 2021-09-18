@@ -1,6 +1,6 @@
 import { Inject, Injectable, Injector, Type } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CONFIGURATION_OPTIONS, CONFIGURATION_TYPE } from './configuration.injection-tokens';
 import { ConfigurationOptions } from './configuration.options';
 import { isPromise } from './helpers';
