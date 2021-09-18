@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm publish
-        working-directory: dist/angular-config
+        working-directory: dist/angular-runtime-config
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
