@@ -84,7 +84,7 @@ export class SomeService {
 
 1. Create `config.json` file at the root of your app.
 
-   ```json
+   ```javascript
    {
      "apiUrl": "some url",
      "apiKey": "some key"
@@ -93,7 +93,7 @@ export class SomeService {
    
 1. Add `config.json` file to assets in `angular.json`
 
-   ```json
+   ```javascript
    ...
    "assets": [
      "src/favicon.ico",
@@ -142,7 +142,7 @@ AngularConfigModule.forRoot(Configuration, {
 
 Don't forget to add all configuration files to assets in `angular.json`. You can also add whole folder.
 
-```json
+```javascript
 ...
 "assets": [
   "src/favicon.ico",
