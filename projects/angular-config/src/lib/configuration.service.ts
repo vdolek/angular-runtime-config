@@ -1,6 +1,6 @@
 import { Inject, Injectable, Injector, Type } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CONFIGURATION_OPTIONS, CONFIGURATION_TYPE } from './configuration.injection-tokens';
 import { ConfigurationOptions } from './configuration.options';
 import { isPromise } from './helpers';
@@ -29,6 +29,14 @@ export class ConfigurationService<TConfiguration> {
   }
 
   public async init(): Promise<void> {
+    try {
+      await this.initInternal();
+    } catch (error) {
+      throw Error(`Configuration load failed - ${error.message}`);
+    }
+  }
+
+  private async initInternal(): Promise<void> {
     const urls = await this.getUrls();
     const externalUrls = urls.map(x => this.ensureExternalUrl(x));
 
