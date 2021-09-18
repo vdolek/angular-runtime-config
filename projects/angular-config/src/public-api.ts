@@ -2,6 +2,7 @@
  * Public API Surface of angular-config
  */
 
-export * from './lib/angular-config.service';
-export * from './lib/angular-config.component';
-export * from './lib/angular-config.module';
+export { ConfigurationModule } from './lib/angular-config.module';
+export { ConfigurationBase } from './lib/configuration.model';
+export { CONFIGURATION_APP_INITIALIZER } from './lib/configuration.injection-tokens';
+export * from './lib/configuration.options';
