@@ -15,10 +15,10 @@ import { isPromise } from './helpers';
     HttpClientModule
   ]
 })
-export class ConfigurationModule {
-  public static forRoot<TConfiguration extends ConfigurationBase>(configurationType: { new(json: ConfigurationJson): TConfiguration }, urlFactory?: ConfigurationUrlFactory): ModuleWithProviders<ConfigurationModule> {
+export class AngularConfigModule {
+  public static forRoot<TConfiguration extends ConfigurationBase>(configurationType: { new(json: ConfigurationJson): TConfiguration }, urlFactory?: ConfigurationUrlFactory): ModuleWithProviders<AngularConfigModule> {
     return {
-      ngModule: ConfigurationModule,
+      ngModule: AngularConfigModule,
       providers: [
         ConfigurationService,
         {
