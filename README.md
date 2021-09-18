@@ -10,6 +10,12 @@ move between your environments without needing to compile it every time?
 
 **`angular-config` library is here just for that!**
 
+## Playground
+
+[StackBlitz playground](https://stackblitz.com/edit/angular-config-playground)
+
+[Playground project](https://github.com/vdolek/angular-config/tree/master/playground)
+
 ## How does it work?
 
 At the initialisation phase of Angular app request for JSON configuration file is made. The content of the file
