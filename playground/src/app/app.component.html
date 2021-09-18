@@ -1,7 +1,9 @@
-<h1>angular-runtime-config playground</h1>
+<h1>Angular Runtime Config Playground</h1>
 
 <div class="row mt-3">
   <div class="col-3">
+    <h2>Environments</h2>
+
     <div class="list-group">
       <a href="" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'LOCAL'">default</a>
       <a href="?env=DEV" class="list-group-item list-group-item-action" [class.active]="config.environmentName === 'DEV'">DEV</a>
@@ -11,6 +13,8 @@
   </div>
 
   <div class="col-9">
+    <h2>Loaded configuration</h2>
+
     <table class="table">
       <thead>
       <tr>
