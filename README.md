@@ -1,20 +1,20 @@
-# Angular Config
+# Angular Runtime Config
 
-[![github version](https://img.shields.io/github/package-json/v/vdolek/angular-config/master?label=github)](https://github.com/vdolek/angular-config)
-[![npm version](https://img.shields.io/npm/v/angular-config)](https://www.npmjs.com/package/angular-config)
-[![build status](https://img.shields.io/github/workflow/status/vdolek/angular-config/CI/master)](https://github.com/vdolek/angular-config/actions?query=workflow%3ACI)
-[![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vdolek/angular-config)](https://snyk.io/test/github/vdolek/angular-config)
+[![github version](https://img.shields.io/github/package-json/v/vdolek/angular-runtime-config/master?label=github)](https://github.com/vdolek/angular-runtime-config)
+[![npm version](https://img.shields.io/npm/v/angular-runtime-config)](https://www.npmjs.com/package/angular-runtime-config)
+[![build status](https://img.shields.io/github/workflow/status/vdolek/angular-runtime-config/CI/master)](https://github.com/vdolek/angular-runtime-config/actions?query=workflow%3ACI)
+[![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vdolek/angular-runtime-config)](https://snyk.io/test/github/vdolek/angular-runtime-config)
 
 Are you tired of default compiled-in environments in Angular apps? Do you want to have one package that you can
 move between your environments without needing to compile it every time?
 
-**`angular-config` library is here just for that!** One package with multiple environment configuration support for Angular apps.
+**`angular-runtime-config` library is here just for that!** One package with multiple environment configuration support for Angular apps.
 
 ## Playground
 
-[StackBlitz playground](https://stackblitz.com/edit/angular-config-playground)
+[StackBlitz playground](https://stackblitz.com/edit/angular-runtime-config-playground)
 
-[Playground project](https://github.com/vdolek/angular-config/tree/master/playground)
+[Playground project](https://github.com/vdolek/angular-runtime-config/tree/master/playground)
 
 ## How does it work?
 
@@ -45,9 +45,9 @@ export class SomeService {
 
 ## Basic usage
 
-1. Install angular-config library.
+1. Install angular-runtime-config library.
    ```shell
-   $ npm install angular-config
+   $ npm install angular-runtime-config
    ```
 
 1. Create configuration class definition.
@@ -60,11 +60,11 @@ export class SomeService {
     }
     ```
 
-1. Import `AngularConfigModule` in your `AppModule`. You have to specify configuration class from previous step 
+1. Import `AngularRuntimeConfigModule` in your `AppModule`. You have to specify configuration class from previous step 
    as a parameter for `forRoot()` method. 
 
     ```typescript
-    import { AngularConfigModule } from 'angular-config';
+    import { AngularRuntimeConfigModule } from 'angular-runtime-config';
     
     @NgModule({
       declarations: [
@@ -73,8 +73,8 @@ export class SomeService {
       imports: [
         ...,
     
-        // specify AngularConfigModule as an import
-        AngularConfigModule.forRoot(Configuration)
+        // specify AngularRuntimeConfigModule as an import
+        AngularRuntimeConfigModule.forRoot(Configuration)
       ],
       providers: [],
       bootstrap: [ AppComponent ]
@@ -125,7 +125,7 @@ For that look at the code examples next.
 Configuration file URL can be absolute or relative to app root url.
 
 ```typescript
-AngularConfigModule.forRoot(Configuration, {
+AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: () => 'config/config.json'
 })
 ```
@@ -135,7 +135,7 @@ AngularConfigModule.forRoot(Configuration, {
 When using multiple configuration files, files are merged in returned array order.
 
 ```typescript
-AngularConfigModule.forRoot(Configuration, {
+AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: () => [ 'config/config.common.json', 'config/config.DEV.json' ]
 })
 ```
@@ -155,7 +155,7 @@ Don't forget to add all configuration files to assets in `angular.json`. You can
 ### Load multiple configuration files based on environment
 
 ```typescript
-AngularConfigModule.forRoot(Configuration, {
+AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: () => {
     const env = getEnvironment(); // your defined method that provides current environment name
     return ['/config/config.common.json', `/config/config.${env}.json`]
@@ -178,7 +178,7 @@ function getEnvironment(): string {
 
 ### Load multiple configuration files based on environment using injector
 ```typescript
-AngularConfigModule.forRoot(Configuration, {
+AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: (injector: Injector) => {
     const env = getEnvironment(injector); // your defined method that provides current environment name
     return ['/config/config.common.json', `/config/config.${env}.json`]
@@ -188,7 +188,7 @@ AngularConfigModule.forRoot(Configuration, {
 
 ### Async load multiple configuration files based on environment using injector
 ```typescript
-AngularConfigModule.forRoot(Configuration, {
+AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: async (injector: Injector) => {
     const env = await getEnvironment(injector); // your defined method that provides current environment name
     return ['/config/config.common.json', `/config/config.${env}.json`]

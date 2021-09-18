@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AngularConfigModule } from 'angular-config';
+import { AngularRuntimeConfigModule } from 'angular-runtime-config';
 import { Configuration } from './configuration';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { Configuration } from './configuration';
   imports: [
     BrowserModule,
 
-    AngularConfigModule.forRoot(Configuration, {
+    AngularRuntimeConfigModule.forRoot(Configuration, {
       log: true,
       urlFactory: () => {
         const urlParams = new URLSearchParams(window.location.search);

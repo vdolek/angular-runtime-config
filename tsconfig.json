@@ -3,9 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "angular-config": [
-        "dist/angular-config/angular-config",
-        "dist/angular-config"
+      "angular-runtime-config": [
+        "dist/angular-runtime-config/angular-runtime-config",
+        "dist/angular-runtime-config"
       ]
     },
     "baseUrl": "./",

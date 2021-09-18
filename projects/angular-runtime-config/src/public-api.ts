@@ -1,7 +1,7 @@
 /*
- * Public API Surface of angular-config
+ * Public API Surface of angular-runtime-config
  */
 
-export { AngularConfigModule } from './lib/angular-config.module';
+export { AngularRuntimeConfigModule } from './lib/angular-runtime-config.module';
 export { CONFIGURATION_APP_INITIALIZER } from './lib/configuration.injection-tokens';
 export * from './lib/configuration.options';

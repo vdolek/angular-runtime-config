@@ -1,11 +1,11 @@
 {
-  "name": "angular-config",
+  "name": "angular-runtime-config",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vdolek/angular-config"
+    "url": "https://github.com/vdolek/angular-runtime-config"
   },
-  "homepage": "https://github.com/vdolek/angular-config#readme",
+  "homepage": "https://github.com/vdolek/angular-runtime-config#readme",
   "author": {
     "name": "Martin Volek",
     "email": "martin@vdolek.cz"
