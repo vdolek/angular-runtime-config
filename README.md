@@ -73,7 +73,7 @@ export class SomeService {
       imports: [
         ...,
     
-        // Specify AngularConfigModule as an import
+        // specify AngularConfigModule as an import
         AngularConfigModule.forRoot(Configuration)
       ],
       providers: [],
