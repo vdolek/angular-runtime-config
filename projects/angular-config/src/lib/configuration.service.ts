@@ -47,6 +47,10 @@ export class ConfigurationService<TConfiguration> {
     }
 
     this.config = config;
+
+    if (this.configurationOptions?.log === true) {
+      console.log("Configuration loaded", config);
+    }
   }
 
   private async getUrls(): Promise<string[]> {

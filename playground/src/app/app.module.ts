@@ -13,6 +13,7 @@ import { Configuration } from './configuration';
     BrowserModule,
 
     AngularConfigModule.forRoot(Configuration, {
+      log: true,
       urlFactory: () => {
         const urlParams = new URLSearchParams(window.location.search);
         const env = urlParams.get('env') ?? 'LOCAL';
