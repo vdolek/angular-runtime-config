@@ -1,3 +1,16 @@
-<div (resized)="onResized($event)">
-  {{ width }} x {{ height }}
-</div>
+<h1>angular-config playground</h1>
+
+<h2>Environments</h2>
+<ul>
+  <li><a href="/">default</a></li>
+  <li><a href="/?env=DEV">DEV</a></li>
+  <li><a href="/?env=INT">INT</a></li>
+  <li><a href="/?env=PROD">PROD</a></li>
+</ul>
+
+<h2>Loaded configuration</h2>
+<ul>
+  <li *ngFor="let key of [ 'cacheExpiration', 'backendUrl', 'webApiKey' ]">
+    {{ key }}: {{ config[key] ?? 'NULL' }}
+  </li>
+</ul>

@@ -1,5 +1,5 @@
 export class ConfigurationBase {
-  [_: string]: string;
+  [_: string]: string | undefined;
 
   public constructor(json: ConfigurationJson) {
     for (const prop in json) {
@@ -11,5 +11,5 @@ export class ConfigurationBase {
 }
 
 export interface ConfigurationJson {
-  [_: string]: string
+  [_: string]: string | undefined
 }

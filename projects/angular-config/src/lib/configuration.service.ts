@@ -48,7 +48,7 @@ export class ConfigurationService<TConfiguration extends ConfigurationBase> {
 
   private async getUrls(): Promise<string[]> {
     if (this.configurationOptions?.urlFactory == null) {
-      return ['config.json'];
+      return ['config.common.json'];
     }
 
     let result = this.configurationOptions.urlFactory();
