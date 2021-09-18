@@ -13,7 +13,7 @@ export class ConfigurationService<TConfiguration> {
 
   public get configuration(): TConfiguration {
     if (this.config == null) {
-      throw Error('Configuration haven\'t been initialized')
+      throw Error('Configuration hasn\'t been initialized')
     }
 
     return this.config;
