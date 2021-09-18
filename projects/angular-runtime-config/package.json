@@ -12,11 +12,16 @@
   },
   "keywords": [
     "angular",
+    "runtime-configuration",
+    "runtime-config",
+    "configuration-management",
     "configuration",
     "config",
     "package",
     "environment",
-    "deployment"
+    "deploy",
+    "deployment",
+    "runtime"
   ],
   "license": "MIT",
   "peerDependencies": {

@@ -5,10 +5,14 @@
 [![build status](https://img.shields.io/github/workflow/status/vdolek/angular-runtime-config/CI/master)](https://github.com/vdolek/angular-runtime-config/actions?query=workflow%3ACI)
 [![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vdolek/angular-runtime-config)](https://snyk.io/test/github/vdolek/angular-runtime-config)
 
-Are you tired of default compiled-in environments in Angular apps? Do you want to have one package that you can
-move between your environments without needing to compile it every time?
+TL;DR, Angular support for one deployment package for different environments with specific configurations.
 
-**`angular-runtime-config` library is here just for that!** One package with multiple environment configuration support for Angular apps.
+Angular framework lacks support for runtime configuration management. Build-in environments structure is compiled
+with the deployment package, so you have to build the application for every environment. It doesn't allow you
+to build one package which could be deployed to different environments.
+
+This library brings support for loading configuration in runtime based on your configuration. It also allows you to
+load multiple configuration files and merge them into one configuration object.
 
 ## Playground
 
@@ -19,11 +23,11 @@ move between your environments without needing to compile it every time?
 ## How does it work?
 
 At the initialisation phase of Angular app request for JSON configuration file is made. The content of the file
-is saved for later use. The configuration parameters are the resolvable by dependency injection.
+is saved into configuration object that is resolvable by dependency injection.
 
 By default, it looks for `config.json` file at the app root. But it can be changed to look for any other file,
-or even for multiple files that will be merged into one configuration. This way you can have some configuration
-parameters shared between all environments and override only the different ones.
+or even for multiple files that will be merged into one configuration object. This way you can have some configuration
+parameters shared between all environments and override only the specific parameters.
 
 It can be as simple as:
 
@@ -31,12 +35,12 @@ It can be as simple as:
 @Injectable({...})
 export class SomeService {
   constructor(
-    private readonly config: Configuration,
+    private readonly config: Configuration, // <-- look here
     private readonly http: HttpClient
   ) {}
   
   async getData(): Promise<any> {
-    const baseUrl = this.config.apiUrl;
+    const baseUrl = this.config.apiUrl; // <-- look here
     var data = await this.http.get(apiUrl + '/data').toPromise();
     return data;
   }
@@ -45,18 +49,18 @@ export class SomeService {
 
 ## Basic usage
 
-1. Install angular-runtime-config library.
+1. Install `angular-runtime-config` library.
    ```shell
    $ npm install angular-runtime-config
    ```
 
-1. Create configuration class definition.
+1. Create configuration class definition with your configuration parameters.
    
     ```typescript
     export class Configuration {
-      readonly apiUrl!: string;
-      readonly apiKey?: string;
-      // some other configuration parameters
+      readonly apiUrl!: string; // only example
+      readonly apiKey?: string; // only example
+      // add some other configuration parameters
     }
     ```
 
@@ -120,7 +124,7 @@ For that look at the code examples next.
 
 ## Specifying which configuration file/files to load
 
-### Only change loaded configuration file
+### Load specific configuration file
 
 Configuration file URL can be absolute or relative to app root url.
 
@@ -163,7 +167,8 @@ AngularRuntimeConfigModule.forRoot(Configuration, {
 })
 ```
 
-Example of `getEnvironment()` function:
+Example of `getEnvironment()` function: (it can be implemented in any way)
+
 ```typescript
 function getEnvironment(): string {
   switch (location.origin) {
@@ -177,6 +182,9 @@ function getEnvironment(): string {
 ```
 
 ### Load multiple configuration files based on environment using injector
+
+If you need to resolve some dependencies in order to determine url of configuration files, you can use Angular Injector.
+
 ```typescript
 AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: (injector: Injector) => {
@@ -187,6 +195,9 @@ AngularRuntimeConfigModule.forRoot(Configuration, {
 ```
 
 ### Async load multiple configuration files based on environment using injector
+
+It is even possible to implement make `urlFactory` asynchronous.
+
 ```typescript
 AngularRuntimeConfigModule.forRoot(Configuration, {
   urlFactory: async (injector: Injector) => {
