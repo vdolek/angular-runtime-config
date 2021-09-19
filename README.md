@@ -1,4 +1,4 @@
-# Angular Runtime Config
+# Angular Runtime Configuration
 
 [![github version](https://img.shields.io/github/package-json/v/vdolek/angular-runtime-config/master?label=github)](https://github.com/vdolek/angular-runtime-config)
 [![npm version](https://img.shields.io/npm/v/angular-runtime-config)](https://www.npmjs.com/package/angular-runtime-config)
