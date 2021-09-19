@@ -1,3 +1,4 @@
 {
+  "environmentName": "INT",
   "backendUrl": "https://int.example.com"
 }

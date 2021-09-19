@@ -14,10 +14,10 @@ import { isPromise } from './helpers';
     HttpClientModule
   ]
 })
-export class AngularConfigModule {
-  public static forRoot<TConfiguration>(configurationType: Type<TConfiguration>, options?: ConfigurationOptions): ModuleWithProviders<AngularConfigModule> {
+export class AngularRuntimeConfigModule {
+  public static forRoot<TConfiguration>(configurationType: Type<TConfiguration>, options?: ConfigurationOptions): ModuleWithProviders<AngularRuntimeConfigModule> {
     return {
-      ngModule: AngularConfigModule,
+      ngModule: AngularRuntimeConfigModule,
       providers: [
         ConfigurationService,
         {

@@ -1,4 +1,5 @@
 {
+  "environmentName": "LOCAL",
   "backendUrl": "https://localhost",
   "webApiKey": null
 }

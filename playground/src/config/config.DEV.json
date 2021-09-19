@@ -1,3 +1,4 @@
 {
+  "environmentName": "DEV",
   "backendUrl": "https://dev.example.com"
 }

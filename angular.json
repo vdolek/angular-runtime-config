@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-config": {
+    "angular-runtime-config": {
       "projectType": "library",
-      "root": "projects/angular-config",
-      "sourceRoot": "projects/angular-config/src",
+      "root": "projects/angular-runtime-config",
+      "sourceRoot": "projects/angular-runtime-config/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/angular-config/ng-package.json"
+            "project": "projects/angular-runtime-config/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/angular-config/tsconfig.lib.prod.json"
+              "tsConfig": "projects/angular-runtime-config/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/angular-config/tsconfig.lib.json"
+              "tsConfig": "projects/angular-runtime-config/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,13 +27,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-config/src/test.ts",
-            "tsConfig": "projects/angular-config/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-config/karma.conf.js"
+            "main": "projects/angular-runtime-config/src/test.ts",
+            "tsConfig": "projects/angular-runtime-config/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-runtime-config/karma.conf.js"
           }
         }
       }
     }
   },
-  "defaultProject": "angular-config"
+  "defaultProject": "angular-runtime-config"
 }

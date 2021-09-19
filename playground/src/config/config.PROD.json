@@ -1,4 +1,5 @@
 {
+  "environmentName": "PROD",
   "backendUrl": "https://www.example.com",
   "webApiKey": "secretPRODkey"
 }
