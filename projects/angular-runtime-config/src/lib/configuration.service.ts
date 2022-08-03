@@ -31,7 +31,7 @@ export class ConfigurationService<TConfiguration> {
   public async init(): Promise<void> {
     try {
       await this.initInternal();
-    } catch (error) {
+    } catch (error: any) {
       throw Error(`Configuration load failed - ${error.message}`);
     }
   }
