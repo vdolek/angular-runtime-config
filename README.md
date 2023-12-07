@@ -2,8 +2,7 @@
 
 [![github version](https://img.shields.io/github/package-json/v/vdolek/angular-runtime-config/master?label=github)](https://github.com/vdolek/angular-runtime-config)
 [![npm version](https://img.shields.io/npm/v/angular-runtime-config)](https://www.npmjs.com/package/angular-runtime-config)
-[![build status](https://img.shields.io/github/workflow/status/vdolek/angular-runtime-config/CI/master)](https://github.com/vdolek/angular-runtime-config/actions?query=workflow%3ACI)
-[![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vdolek/angular-runtime-config)](https://snyk.io/test/github/vdolek/angular-runtime-config)
+[![CI](https://github.com/vdolek/angular-runtime-config/actions/workflows/ci.yml/badge.svg)](https://github.com/vdolek/angular-runtime-config/actions/workflows/ci.yml)
 
 TL;DR, Angular support for one deployment package for different environments with specific configurations.
 

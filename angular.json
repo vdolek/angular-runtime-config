@@ -35,5 +35,8 @@
       }
     }
   },
-  "defaultProject": "angular-runtime-config"
+  "defaultProject": "angular-runtime-config",
+  "cli": {
+    "analytics": false
+  }
 }
