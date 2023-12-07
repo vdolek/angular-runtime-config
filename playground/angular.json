@@ -103,5 +103,8 @@
       }
     }
   },
-  "defaultProject": "playground"
+  "defaultProject": "playground",
+  "cli": {
+    "analytics": false
+  }
 }
